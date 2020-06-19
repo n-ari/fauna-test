@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+  <head>
+    <title>fauna-test</title>
+  </head>
+  <body>
+    <h1>fauna-test</h1>
+    <p>hello~</p>
+    <p id="output"></p>
+    <button onclick="getFlag('first flag')">get first flag</button>
+    <button onclick="getFlag('second flag')">get second flag</button>
+  <script>
+    async function getFlag(flagName){
+      fetch(`/.netlify/functions/test/${flagName}`).then((res)=>res.json()).then(({data:[flag]})=>{
+        document.getElementById("output").innerText = flag;
+      });
+    }
+  </script>
+  </body>
+</html>
